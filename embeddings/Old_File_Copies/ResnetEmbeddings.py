@@ -33,7 +33,7 @@ def load_and_preprocess_image(url):
 model = models.resnet50(pretrained=True)
 model.eval()  # Set the model to evaluation mode
 
-# Load your dataset
+
 df = pd.read_csv('/Users/mansivyas/RA-MultiModel-ReducedSpecifciation/skindisease_30.csv')  # Update this path
 
 # Extract embeddings
@@ -59,9 +59,9 @@ for _, row in df.iterrows():
     except Exception as e:
         print(f"Error processing image {row['url']}: {e}")
 
-# Convert embeddings and labels to a DataFrame
+
 embeddings_df = pd.DataFrame(embeddings)
 embeddings_df['label'] = labels
 
-# Save embeddings to a CSV file
+
 embeddings_df.to_csv('embeddingsResnet30.csv', index=False)
