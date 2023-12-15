@@ -55,10 +55,9 @@ with ThreadPoolExecutor(max_workers=5) as executor:  # Adjust max_workers based 
     for batch_results in executor.map(process_images, url_batches):
         embeddings.extend(batch_results)
 
-# Assuming 'label' column exists in your DataFrame
-# Creating a DataFrame for embeddings and adding the 'label' column
+
 embeddings_df = pd.DataFrame(embeddings)
 embeddings_df['label'] = df['label']
 
-# Save the embeddings to a CSV file
+
 embeddings_df.to_csv('skin_disease_embeddings.csv', index=False)
